@@ -11,8 +11,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(content: params[:content])
-    redirect_to action: :index  #投稿後リダイレクトさせている
+    post = Post.create(content: params[:content])
+    render json:{ post: post }
+    # renderメソッドを用いて、レスポンスで返却されるデータフォーマットにJSONに指定
   end
 
 end
